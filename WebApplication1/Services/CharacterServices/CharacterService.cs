@@ -12,18 +12,18 @@ namespace WebApplication1.Services.CharacterServices
             new Character(),
             new Character { Name = "Sam"}
         };
-        public List<Character> AddNewChracter(Character ch)
+        public async Task<List<Character>> AddNewChracter(Character ch)
         {
             characters.Add(ch);
             return characters;
         }
 
-        public List<Character> GetAllChracters()
+        public async Task<List<Character>> GetAllChracters()
         {
             return characters;
         }
 
-        public Character GetById(int Id)
+        public async Task<Character> GetById(int Id)
         {
             return characters.FirstOrDefault(c => c.ID == Id);
         }

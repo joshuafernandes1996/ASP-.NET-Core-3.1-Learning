@@ -19,21 +19,21 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet("GetAll")]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_characterService.GetAllChracters());
+            return Ok(await _characterService.GetAllChracters());
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetSingle(int id)
+        public async Task<IActionResult> GetSingle(int id)
         {
-            return Ok(_characterService.GetById(id));
+            return Ok(await _characterService.GetById(id));
         }
 
         [HttpPost]
-        public IActionResult AddCharacter(Character ch)
+        public async Task<IActionResult> AddCharacter(Character ch)
         {
-            return Ok(_characterService.AddNewChracter(ch));
+            return Ok(await _characterService.AddNewChracter(ch));
         }
     }
 }

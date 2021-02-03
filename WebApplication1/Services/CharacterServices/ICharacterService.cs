@@ -8,8 +8,8 @@ namespace WebApplication1.Services.CharacterServices
 {
     public interface ICharacterService
     {
-        List<Character> GetAllChracters();
-        Character GetById(int Id);
-        List<Character> AddNewChracter(Character ch);
+       Task<List<Character>> GetAllChracters();
+       Task<Character> GetById(int Id);
+       Task<List<Character>> AddNewChracter(Character ch);
     }
 }
