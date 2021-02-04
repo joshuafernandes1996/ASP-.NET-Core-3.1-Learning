@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RPG_GAME.DTO.Character;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCharacter(Character ch)
+        public async Task<IActionResult> AddCharacter(AddCharacterDTO ch)
         {
             return Ok(await _characterService.AddNewChracter(ch));
         }

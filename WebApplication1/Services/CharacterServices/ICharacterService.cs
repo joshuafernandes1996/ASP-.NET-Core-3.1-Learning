@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RPG_GAME.DTO.Character;
+using RPG_GAME.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,8 +10,8 @@ namespace WebApplication1.Services.CharacterServices
 {
     public interface ICharacterService
     {
-       Task<List<Character>> GetAllChracters();
-       Task<Character> GetById(int Id);
-       Task<List<Character>> AddNewChracter(Character ch);
+       Task<ServiceResponse<List<GetCharacterDTO>>> GetAllChracters();
+       Task<ServiceResponse<GetCharacterDTO>> GetById(int Id);
+       Task<ServiceResponse<List<GetCharacterDTO>>> AddNewChracter(AddCharacterDTO ch);
     }
 }
