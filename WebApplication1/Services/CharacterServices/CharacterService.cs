@@ -46,5 +46,50 @@ namespace WebApplication1.Services.CharacterServices
             response.Data = _mapper.Map<GetCharacterDTO>(characters.FirstOrDefault(c => c.ID == Id));
             return response;
         }
+
+        public async Task<ServiceResponse<GetCharacterDTO>> UpdateCharacter(UpdateCharacterDTO updateCharacterDTO)
+        {
+            ServiceResponse<GetCharacterDTO> response = new ServiceResponse<GetCharacterDTO>();
+
+            try
+            {
+                Character ch = characters.FirstOrDefault(c => c.ID == updateCharacterDTO.ID);
+                ch.Name = updateCharacterDTO.Name;
+                ch.Strength = updateCharacterDTO.Strength;
+                ch.Intelligence = updateCharacterDTO.Intelligence;
+                ch.HitPoint = updateCharacterDTO.HitPoint;
+                ch.Defense = updateCharacterDTO.Defense;
+                ch.Class = updateCharacterDTO.Class;
+
+                response.Data = _mapper.Map<GetCharacterDTO>(ch);
+            }
+            catch (Exception e) {
+                response.Message = "Not Found Character with ID: " + updateCharacterDTO.ID;
+                response.Success = false;
+            }
+
+            return response;
+        }
+
+        public async Task<ServiceResponse<List<GetCharacterDTO>>> DeleteCharacter(int id)
+        {
+            ServiceResponse<List<GetCharacterDTO>> response = new ServiceResponse<List<GetCharacterDTO>>();
+
+            try
+            {
+                Character ch = characters.First(c => c.ID == id);
+
+                characters.Remove(ch);
+
+                response.Data = characters.Select(c => _mapper.Map<GetCharacterDTO>(c)).ToList();
+            }
+            catch (Exception e)
+            {
+                response.Message = "Not Found Character with ID: " + id;
+                response.Success = false;
+            }
+
+            return response;
+        }
     }
 }

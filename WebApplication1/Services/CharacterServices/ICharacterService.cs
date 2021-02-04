@@ -13,5 +13,7 @@ namespace WebApplication1.Services.CharacterServices
        Task<ServiceResponse<List<GetCharacterDTO>>> GetAllChracters();
        Task<ServiceResponse<GetCharacterDTO>> GetById(int Id);
        Task<ServiceResponse<List<GetCharacterDTO>>> AddNewChracter(AddCharacterDTO ch);
+       Task<ServiceResponse<GetCharacterDTO>> UpdateCharacter(UpdateCharacterDTO ch);
+       Task<ServiceResponse<List<GetCharacterDTO>>> DeleteCharacter(int id);
     }
 }
