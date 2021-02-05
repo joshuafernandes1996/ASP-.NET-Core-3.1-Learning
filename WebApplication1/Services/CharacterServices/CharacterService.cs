@@ -33,10 +33,10 @@ namespace WebApplication1.Services.CharacterServices
             return response;
         }
 
-        public async Task<ServiceResponse<List<GetCharacterDTO>>> GetAllChracters()
+        public async Task<ServiceResponse<List<GetCharacterDTO>>> GetAllChracters(int id)
         {
             ServiceResponse<List<GetCharacterDTO>> response = new ServiceResponse<List<GetCharacterDTO>>();
-            List<Character> dbCharacters = await _context.Characters.ToListAsync();
+            List<Character> dbCharacters = await _context.Characters.Where(c => c.User.ID == id).ToListAsync();
             response.Data = dbCharacters.Select(c => _mapper.Map<GetCharacterDTO>(c)).ToList();
             return response;
         }

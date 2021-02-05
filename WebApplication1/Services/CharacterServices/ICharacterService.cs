@@ -10,7 +10,7 @@ namespace WebApplication1.Services.CharacterServices
 {
     public interface ICharacterService
     {
-       Task<ServiceResponse<List<GetCharacterDTO>>> GetAllChracters();
+       Task<ServiceResponse<List<GetCharacterDTO>>> GetAllChracters(int id);
        Task<ServiceResponse<GetCharacterDTO>> GetById(int Id);
        Task<ServiceResponse<List<GetCharacterDTO>>> AddNewChracter(AddCharacterDTO ch);
        Task<ServiceResponse<GetCharacterDTO>> UpdateCharacter(UpdateCharacterDTO ch);
